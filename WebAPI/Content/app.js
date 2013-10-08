@@ -39,7 +39,7 @@ app.service('ajax', function ($rootScope, $http) {
 
     this.post = function (url, params, data) {
         var now = new Date();
-        var utcNumber = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds);
+        var utcNumber = now.getTime();
         var auth = localStorage.username + "|" + utcNumber + "|" + CryptoJS.SHA3(url + localStorage.apikey + utcNumber).toString(CryptoJS.enc.Base64);
         return $http.post(url, { params: params, data: data, timeout: 60000, cache: false, headers: { 'Authorization': auth } }).then(this.success, this.error);
     };

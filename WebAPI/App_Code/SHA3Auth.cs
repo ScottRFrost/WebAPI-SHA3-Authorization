@@ -10,8 +10,6 @@ namespace WebAPI.Controllers
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            //actionContext.Response = actionContext.ControllerContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "No");
-
             //Look for Authorization header
             if (!actionContext.Request.Headers.Contains("Authorization"))
             {
@@ -19,7 +17,7 @@ namespace WebAPI.Controllers
                 return;
             }
             
-            ////Split Username|UTC Date|Hash of url + localStorage.apikey + utcNumber
+            //Split Username|UTC Date|Hash of url + localStorage.apikey + utcNumber
             var auth = actionContext.Request.Headers.GetValues("Authorization");
             var parts = auth.First().Split('|');
             if (parts.Length != 3)
@@ -47,7 +45,7 @@ namespace WebAPI.Controllers
             var url = actionContext.Request.RequestUri.AbsolutePath;
             var utf8 = new System.Text.UTF8Encoding();
             var sha3 = new SHA3Managed(512);
-            var hashed = sha3.ComputeHash(utf8.GetBytes(url + "test" + parts[1]));
+            var hashed = sha3.ComputeHash(utf8.GetBytes(url + "test" + parts[1])); //Load the middle portion from database, after looking up the API Key by the username
             if (parts[2] != Convert.ToBase64String(hashed))
             {
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Bad API Key");
