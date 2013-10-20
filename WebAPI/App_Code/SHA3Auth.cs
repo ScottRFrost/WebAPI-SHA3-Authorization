@@ -2,9 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using LinkologyPUSHTimeclock;
 
-namespace WebAPI.Controllers
+namespace WebAPI
 {
     public class SHA3Auth : System.Web.Http.AuthorizeAttribute
     {

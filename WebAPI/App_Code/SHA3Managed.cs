@@ -1,10 +1,6 @@
-﻿#region
+﻿using System;
 
-using System;
-
-#endregion
-
-namespace LinkologyPUSHTimeclock
+namespace WebAPI
 {
     public class SHA3Managed : SHA3
     {
