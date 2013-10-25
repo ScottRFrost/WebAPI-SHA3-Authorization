@@ -2,16 +2,17 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using LinkologyPUSHTimeclock;
 
-namespace WebAPI.Controllers
+namespace WebAPI
 {
     public class SHA3Auth : System.Web.Http.AuthorizeAttribute
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
+            System.Net.Http.HttpRequestMessage request = actionContext.Request;
+
             //Look for Authorization header
-            if (!actionContext.Request.Headers.Contains("Authorization"))
+            if (!request.Headers.Contains("Authorization"))
             {
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "Authorization Header Required.");
                 return;

@@ -1,12 +1,9 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-#endregion
 
-namespace LinkologyPUSHTimeclock
+namespace WebAPI
 {
     /// <summary>
     /// Adapted from https://bitbucket.org/mmsaffari/sha3

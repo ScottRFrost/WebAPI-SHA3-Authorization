@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace WebAPI
+namespace Columbia_Sussex
 {
     public class FilterConfig
     {
